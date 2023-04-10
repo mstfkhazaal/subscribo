@@ -124,17 +124,17 @@ return [
             ],
             'pipelines' => [],
         ]),
-        Features::registration([
-            'page' => \Mstfkhazaal\FilamentJet\Filament\Pages\Auth\Register::class,
-            'terms_of_service' => \Mstfkhazaal\FilamentJet\Http\Livewire\TermsOfService::class,
-            'privacy_policy' => \Mstfkhazaal\FilamentJet\Http\Livewire\PrivacyPolicy::class,
-            'card_width' => 'md',
-            'has_brand' => true,
-            'rate_limiting' => [
-                'enabled' => true,
-                'limit' => 5,
-            ],
-        ]),
+//        Features::registration([
+//            'page' => \Mstfkhazaal\FilamentJet\Filament\Pages\Auth\Register::class,
+//            'terms_of_service' => \Mstfkhazaal\FilamentJet\Http\Livewire\TermsOfService::class,
+//            'privacy_policy' => \Mstfkhazaal\FilamentJet\Http\Livewire\PrivacyPolicy::class,
+//            'card_width' => 'md',
+//            'has_brand' => true,
+//            'rate_limiting' => [
+//                'enabled' => true,
+//                'limit' => 5,
+//            ],
+//        ]),
         Features::resetPasswords([
             'request' => [
                 'page' => \Mstfkhazaal\FilamentJet\Filament\Pages\Auth\PasswordReset\RequestPasswordReset::class,
@@ -185,7 +185,7 @@ return [
         ]),
 
         Features::termsAndPrivacyPolicy(),
-        // Features::profilePhotos(),
+        Features::profilePhotos(),
         // Features::api(),
         Features::teams([
             'invitations' => true,
