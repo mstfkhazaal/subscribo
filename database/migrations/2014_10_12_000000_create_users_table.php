@@ -20,9 +20,14 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedBigInteger('user_status')->index();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
+            $table->foreign('user_status')->references('id')
+                ->on('user_statuses')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

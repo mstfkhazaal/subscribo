@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Mstfkhazaal\FilamentJet\Traits\CanExportPersonalData;
 use Mstfkhazaal\FilamentJet\Traits\HasProfilePhoto;
 use Mstfkhazaal\FilamentJet\Traits\HasTeams;
@@ -21,6 +22,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, ExportsPe
     use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
+    use SoftDeletes;
     use TwoFactorAuthenticatable;
     use CanExportPersonalData;
 
