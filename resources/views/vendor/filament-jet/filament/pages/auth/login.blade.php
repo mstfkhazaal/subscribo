@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="heading">
+        {{ __('filament-jet::auth/login.title') }}
+    </x-slot>
     @if(\Mstfkhazaal\FilamentJet\Features::hasRegistrationFeature())
         <x-slot name="subheading">
             {{ __('filament-jet::auth/login.buttons.register.before') }}

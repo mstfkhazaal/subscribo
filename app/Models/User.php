@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Mstfkhazaal\FilamentJet\Traits\CanExportPersonalData;
 use Mstfkhazaal\FilamentJet\Traits\HasProfilePhoto;
@@ -68,5 +69,15 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, ExportsPe
     public function canAccessFilament(): bool
     {
         return true;
+    }
+
+    /**
+     * Get all of the teams the user belongs to.
+     *
+     * @return BelongsTo
+     */
+    public function status(): BelongsTo
+    {
+        return $this->belongsTo(UserStatus::class,'id');
     }
 }
