@@ -5,14 +5,18 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Models\UserStatus;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 use Mstfkhazaal\FilamentPasswordReveal\Password;
+use Wiebenieuwenhuis\FilamentCharCounter\TextInput;
 
 class UserResource extends Resource
 {
@@ -37,25 +41,24 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_status')
                     ->relationship('status', 'name')
-                    ->required()->label('users.status')
-                    ->translateLabel(),
-                Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255)->label('users.name')
+                    ->label('users.status')
                     ->translateLabel(),
-                Forms\Components\TextInput::make('email')
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(32)->label('users.name')
+                    ->translateLabel(),
+                TextInput::make('email')
                     ->email()
                     ->required()
-                    ->maxLength(255)->label('users.email')
+                    ->maxLength(50)->label('users.email')
                     ->translateLabel(),
-                Forms\Components\TextInput::make('password')
+                Password::make('password')
+                    ->autocomplete('new_password')
                     ->password()
                     ->required()
+                    ->visibleOn('create')
                     ->maxLength(255)->label('users.password')
-                    ->translateLabel(),
-                Password::make('password')->autocomplete('new_password'),
-                Forms\Components\TextInput::make('profile_photo_path')
-                    ->maxLength(2048)->label('users.photo')
                     ->translateLabel(),
             ]);
     }
@@ -64,15 +67,10 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\BadgeColumn::make('status.name')
-                    ->getStateUsing(function (User $record) {
-                        $decoded = json_decode($record->status['name']);
-                        $col = collect($decoded);
-                        $str = app()->getLocale();
-                        return $col->get($str, $col->get('en', $col->first()));
-                    })->label('users.status')
-                    ->translateLabel()
-                ->color('primary'),
+                BadgeColumn::make('status.name')
+                    ->color(static function ($state): string {
+                        return $state;
+                    }),
                 Tables\Columns\TextColumn::make('name')
                     ->label('users.name')
                     ->translateLabel(),

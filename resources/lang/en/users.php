@@ -3,10 +3,9 @@
 return [
     'title'=>'User',
     'plural'=>'Users',
-    'status'=>'status',
+    'status'=>'Status',
     'name' => 'Name',
     'password'=>'Password',
     'email'=>'Email',
     'photo'=>'Profile Photo',
-
 ];

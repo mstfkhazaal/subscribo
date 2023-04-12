@@ -16,7 +16,7 @@ class UserStatusSeeder extends Seeder
         UserStatus::create([
             'id' => 1,
             "code" => "PND",
-            "variant" => "info",
+            "variant" => "secondary",
             'name' => '{"en":"Pending","ar":"قيد الانشاء"}'
         ]);
         UserStatus::create([

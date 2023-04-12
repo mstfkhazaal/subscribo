@@ -1,4 +1,10 @@
 <x-filament::page>
+    <x-slot name="header">
+        {{ __('filament-jet::account/account.title') }}
+    </x-slot>
+    <x-slot name="subtitle">
+       ss
+    </x-slot>
     @if(\Mstfkhazaal\FilamentJet\Features::canUpdateProfileInformation())
         <x-filament-jet-form-section submit="updateProfileInformation">
             <x-slot name="title">

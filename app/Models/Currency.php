@@ -8,25 +8,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
-class Service extends Model
+/**
+ * @method static create(array $currency)
+ * @method static select(string $string, string $string1)
+ * @method static find($currency)
+ */
+class Currency extends Model
 {
     use HasFactory;
     use SoftDeletes;
     use HasTranslations;
-    public $translatable = ['name'];
+    public $translatable = ['currency_name'];
 
 
     protected $fillable = [
-        'name','amount','team_id','active','currency'
+        'currency_code','currency_name','symbol','active'
     ];
-
-    public function teams(): BelongsTo
-    {
-        return $this->belongsTo(Team::class,'id');
-    }
-
-    public function currency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class,'id');
-    }
 }

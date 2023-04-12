@@ -4,6 +4,7 @@ module.exports = {
     content: [
         './resources/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
+        './vendor/suleymanozev/**/*.blade.php'
     ],
     darkMode: 'class',
     theme: {
