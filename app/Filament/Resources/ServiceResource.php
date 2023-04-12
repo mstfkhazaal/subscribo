@@ -75,6 +75,7 @@ class ServiceResource extends Resource
                     ->required(),
                 Forms\Components\Toggle::make('active')
                     ->inline(false)
+                    ->default(true)
                     ->required(),
             ]);
     }
@@ -83,6 +84,7 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('teams.name'),
                 Tables\Columns\TextColumn::make('team_id'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('amount')

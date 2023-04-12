@@ -16,14 +16,14 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Moustafa Khazaal',
-                'email' => 'mstfkhazaal@gmail.com',
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
                 'user_status'=> 2,
                 'password' => Hash::make('123456789'),
                 'remember_token' => Str::random(10),
             ],
             [
-                'name' => 'Vendor User',
+                'name' => 'User',
                 'email' => 'user@gmail.com',
                 'user_status'=> 2,
                 'password' => Hash::make('123456789'),
