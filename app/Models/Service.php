@@ -25,11 +25,10 @@ class Service extends Model
 
     public function teams(): BelongsTo
     {
-        return $this->belongsTo(Team::class,'id');
+        return $this->belongsTo(Team::class,'team_id');
     }
 
-    public function currency(): BelongsTo
-    {
+    public function currency(): BelongsTo {
         return $this->belongsTo(Currency::class,'id');
     }
 }

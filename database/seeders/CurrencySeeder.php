@@ -13,25 +13,28 @@ class CurrencySeeder extends Seeder
      */
     public function run(): void
     {
-        $currencies = [
+        Currency::upsert([
             [
                 'currency_code' => 'USD',
-                'currency_name' => '{"ar": "الدولار الأمريكي", "en": "US Dollar"}',
+                'currency_name' => json_encode(['en' => 'US Dollar', 'ar' => 'الدولار الأمريكي']),
                 'symbol' => '$',
             ],
             [
                 'currency_code' => 'EUR',
-                'currency_name' => '{"en": "Euro", "ar": "اليورو"}',
+                'currency_name' => json_encode(["en"=> "Euro", "ar"=> "اليورو"]),
                 'symbol' => '€',
             ],
             [
                 'currency_code' => 'LBP',
-                'currency_name' => '{"en": "Lebanese Pound", "ar": "ليرة لبناني"}',
+                'currency_name' => json_encode(["en"=> "Lebanese Pound", "ar"=> "ليرة لبناني"]),
                 'symbol' => 'LBP',
             ],
-        ];
-        foreach ($currencies as $currency) {
-            Currency::create($currency);
-        }
+            [
+                'currency_code' => 'RMB',
+                'currency_name' => json_encode(["ar"=> "يوان", "en"=> "Yuan"]),
+                'symbol' => '¥',
+            ],
+
+        ],['currency_code','currency_name','symbol']);
     }
 }
