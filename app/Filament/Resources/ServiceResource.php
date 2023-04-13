@@ -39,7 +39,15 @@ class ServiceResource extends Resource
 
     public $prefix = 'Hello, world!';
 
+    public static function getLabel(): ?string
+    {
+        return __('service.title');
+    }
 
+    public static function getPluralLabel(): ?string
+    {
+        return __('service.plural');
+    }
     public static function form(Form $form): Form
     {
 

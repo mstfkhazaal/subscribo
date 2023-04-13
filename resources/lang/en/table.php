@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'created_at' => 'Created At',
-    'updated_at'=>'Updated At',
-    'deleted_at'=>'Deleted AT',
+    'created_at' => 'Created at',
+    'updated_at'=>'Updated at',
+    'deleted_at'=>'Deleted at',
 ];

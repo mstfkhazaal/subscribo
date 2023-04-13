@@ -13,6 +13,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Mstfkhazaal\FilamentPasswordReveal\Password;
@@ -68,9 +69,11 @@ class UserResource extends Resource
         return $table
             ->columns([
                 BadgeColumn::make('status.name')
-                    ->color(static function ($state): string {
-                        return $state;
-                    }),
+                    ->color(static function ($record): string {
+                        return $record->status->variant;
+                    })
+                    ->label('users.status')
+                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('users.name')
                     ->translateLabel(),
