@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Service;
+use Spatie\Permission\Models\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ServicePolicy
+class RolePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class ServicePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_service');
+        return $user->can('view_any_role');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Service  $service
+     * @param  \Spatie\Permission\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Service $service)
+    public function view(User $user, Role $role)
     {
-        return $user->can('view_service');
+        return $user->can('view_role');
     }
 
     /**
@@ -41,31 +41,31 @@ class ServicePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_service');
+        return $user->can('create_role');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Service  $service
+     * @param  \Spatie\Permission\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Service $service)
+    public function update(User $user, Role $role)
     {
-        return $user->can('update_service');
+        return $user->can('update_role');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Service  $service
+     * @param  \Spatie\Permission\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Service $service)
+    public function delete(User $user, Role $role)
     {
-        return $user->can('delete_service');
+        return $user->can('delete_role');
     }
 
     /**
@@ -76,19 +76,19 @@ class ServicePolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_service');
+        return $user->can('delete_any_role');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Service  $service
+     * @param  \Spatie\Permission\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Service $service)
+    public function forceDelete(User $user, Role $role)
     {
-        return $user->can('force_delete_service');
+        return $user->can('{{ ForceDelete }}');
     }
 
     /**
@@ -99,19 +99,19 @@ class ServicePolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_service');
+        return $user->can('{{ ForceDeleteAny }}');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Service  $service
+     * @param  \Spatie\Permission\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Service $service)
+    public function restore(User $user, Role $role)
     {
-        return $user->can('restore_service');
+        return $user->can('{{ Restore }}');
     }
 
     /**
@@ -122,19 +122,19 @@ class ServicePolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_service');
+        return $user->can('{{ RestoreAny }}');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Service  $service
+     * @param  \Spatie\Permission\Models\Role  $role
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Service $service)
+    public function replicate(User $user, Role $role)
     {
-        return $user->can('replicate_service');
+        return $user->can('{{ Replicate }}');
     }
 
     /**
@@ -145,7 +145,7 @@ class ServicePolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_service');
+        return $user->can('{{ Reorder }}');
     }
 
 }
