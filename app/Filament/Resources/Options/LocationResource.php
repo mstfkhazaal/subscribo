@@ -40,8 +40,10 @@ class LocationResource extends Resource  implements HasShieldPermissions
     protected static ?string $navigationIcon = 'heroicon-o-map';
 
 
-    protected static ?string $navigationGroup = 'Options';
-
+    public static function getNavigationGroup(): ?string
+    {
+        return __('nav.options');
+    }
     public static function getLabel(): ?string
     {
         return __('location.title');

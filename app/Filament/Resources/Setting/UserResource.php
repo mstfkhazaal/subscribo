@@ -39,8 +39,11 @@ class UserResource extends Resource implements HasShieldPermissions
     {
         return __('users.title');
     }
-    protected static ?string $navigationGroup = 'Settings';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament-shield::filament-shield.nav.group');
+    }
     public static function getPluralLabel(): ?string
     {
         return __('users.plural');

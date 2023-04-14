@@ -26,12 +26,9 @@ class AppServiceProvider extends ServiceProvider
             Filament::registerViteTheme('resources/css/filament.css');
         });
         Filament::registerNavigationGroups([
-            'Basic' => NavigationGroup::make()
-                ->label(__('nav.basic')),
-            'Options' => NavigationGroup::make()
-                ->label(__('nav.options')),
-            'Settings' => NavigationGroup::make()
-                ->label(__('filament-shield::filament-shield.nav.group')),
+            __('nav.basic'),
+            __('nav.options'),
+            __('filament-shield::filament-shield.nav.group')
         ]);
 
     }

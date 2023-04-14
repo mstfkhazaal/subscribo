@@ -37,8 +37,11 @@ class CurrencyResource extends Resource implements HasShieldPermissions
     {
         return [app()->getLocale(),'en', 'ar'];
     }
-    protected static ?string $navigationGroup = 'Options';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('nav.options');
+    }
     protected static ?string $model = Currency::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
